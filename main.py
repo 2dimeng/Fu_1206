@@ -7,6 +7,7 @@ import random
 import urllib.request
 import gzip
 import json
+import os
 
 today = datetime.now()
 city = os.environ['CITY']
