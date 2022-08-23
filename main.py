@@ -15,8 +15,8 @@ city = os.environ['CITY']
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 
-user_id = os.environ["USER_ID"]
-template_id = os.environ["TEMPLATE_ID"]
+user_id = os.environ["USER_ID"].split("\n")
+template_id = os.environ["TEMPLATE_ID"].split("\n)
 
 
 def get_weather_data() :
@@ -58,7 +58,7 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 chengshi, wengdu,ganmao,fengxiang,fengji,gaowen,diwen,tianqi,riqi= get_weather(get_weather_data())
-data = {"chengshi":{"value":chengshi,"color":get_random_color()},
+data0 = {"chengshi":{"value":chengshi,"color":get_random_color()},
         "wengdu":{"value":wengdu,"color":get_random_color()},
         "ganmao":{"value":ganmao,"color":get_random_color()},
         "fengxiang":{"value":fengxiang,"color":get_random_color()},
@@ -68,4 +68,10 @@ data = {"chengshi":{"value":chengshi,"color":get_random_color()},
         "tianqi":{"value":tianqi,"color":get_random_color()},
         "riqi":{"value":riqi,"color":get_random_color()},
         "words":{"value":"12点前钉钉打卡","color":get_random_color()}}
-res = wm.send_template(user_id, template_id, data)
+data1 = {"tianqi":{"value":tianqi,"color":get_random_color()},
+        "wengdu":{"value":wengdu,"color":get_random_color()},
+        "gaowen":{"value":gaowen,"color":get_random_color()},
+        "diwen":{"value":diwen,"color":get_random_color()},
+        "ganmao":{"value":ganmao,"color":get_random_color()},}
+wm.send_template(user_id[0], template_id[0], data0)
+wm.send_template(user_id[1], template_id[1], data1)
