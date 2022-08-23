@@ -1,7 +1,8 @@
 name: morning
 on:
   schedule:
-    - cron:  '0 0,2,4 * * *'
+  - cron:  '0 4 * * *'
+  workflow_dispatch:
 
 jobs:
   send_message:
@@ -26,4 +27,6 @@ jobs:
       APP_SECRET: ${{ secrets.APP_SECRET }}
       TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
       USER_ID: ${{ secrets.USER_ID }}
+      START_DATE: ${{ secrets.START_DATE }}
+      BIRTHDAY: ${{ secrets.BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
